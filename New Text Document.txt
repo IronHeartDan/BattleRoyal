@@ -1,0 +1,56 @@
+function Send_Change_Scores(data){
+
+
+Box1 ="";
+Box2 ="";
+Box3 ="";
+Box4 ="";
+Box5 ="";
+Box6 ="";
+Box7 ="";
+Box8 ="";
+Box9 ="";
+
+
+if(data == Client_1_Val){
+
+io.sockets.in(Room).emit("Change_Scores",{"Winner":Client_1,"Val":Client_1_Val});
+
+var Restart =[];
+
+Restart.push({"Client_1":Client_1,"Client_1_Val":Client_1_Val,"Client_1_Chance":1});
+Restart.push({"Client_2":Client_2,"Client_2_Val":Client_2_Val,"Client_2_Chance":2});
+Restart.push({"Room":Room});
+
+
+
+Game_On(Restart);
+
+}else{
+
+
+
+
+
+io.sockets.in(Room).emit("Change_Scores",{"Winner":Client_2,"Val":Client_2_Val});
+
+
+var Restart =[];
+
+Restart.push({"Client_1":Client_1,"Client_1_Val":Client_1_Val,"Client_1_Chance":2});
+Restart.push({"Client_2":Client_2,"Client_2_Val":Client_2_Val,"Client_2_Chance":1});
+Restart.push({"Room":Room});
+
+
+Game_On(Restart);
+
+
+
+}
+
+
+
+
+
+
+} // Fun Send Change Scores

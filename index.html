@@ -1,0 +1,2462 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="jquery.js"></script>
+<script src="jquery-ui.js"></script>
+<script src="jquery.cookie.js"></script>
+<title> X & O </title>
+
+<style>
+
+body {
+  font-family: 'Rakkas', cursive;
+  margin:0;
+}
+
+body input{
+margin:10px;
+border:none;
+border-bottom:2px solid silver;
+width:200px;
+}
+
+.Noti_Widgit{
+margin-top:10px; 
+margin-left:-20px;
+position:absolute;
+border: solid black;
+border-width: 0 3px 3px 0;
+display: inline-block;
+padding: 5px;
+transform: rotate(-315deg);
+cursor:pointer;
+}
+
+.Notifier{
+position:absolute;
+top:15px;
+left:0;
+right:0;
+margin:0 auto;
+width:300px;
+min-height:50px;
+border:2px solid black;
+border-radius:10px;
+background:white;
+display:none;
+}
+
+.Notifier div{
+padding:10px;
+text-align:center;
+}
+
+
+.Notification{
+position:absolute;
+top:0;
+left:0;
+right:0;
+margin:10px auto;
+width:300px;
+height:525px;
+border:2px solid black;
+background:white;
+display:none;
+}
+
+.Nav_Noti{
+height:50px;
+border-bottom:2px solid black;
+display:flex;
+}
+
+
+.Hide_Noti_Con{
+border-right:2px solid black;
+width:50px;
+text-align:center;
+vertical-align:center;
+}
+
+.Title{
+text-align:center;
+vertical-align:center;
+width:200px;
+}
+
+.Settings{
+border-left:2px solid black;
+width:50px;
+text-align:center;
+vertical-align:center;
+}
+
+.Notification i{
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 5px;
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+  cursor:pointer;
+
+}
+
+
+.Requests_Title{
+margin:10px;
+text-align:center;
+}
+
+
+.Requests_Con{
+margin:10px;
+height:auto;
+max-height:80%;
+overflow-y:scroll;
+}
+
+
+
+.Requests_Con div{
+margin:5px;
+text-align:center;
+padding:5px;
+border:1px solid black;
+}
+
+
+
+.User_ac{
+margin:100px auto;
+margin-bottom:0;
+border:2px solid silver;
+width:300px;
+height:auto;
+}
+
+
+.User_nav {
+margin:0 auto;
+text-align:center;
+vertical-align: middle;
+font-size:40px;
+padding:10px;
+color:silver;
+}
+
+.form_container{
+margin:5px auto;
+text-align:center;
+max-width:400px;
+height:auto;
+}
+
+
+.form_container input{
+border:none;
+border-bottom:2px solid silver;
+padding:10px;
+width:250px;
+text-align:center;
+vertical-align: middle;
+}
+
+
+.form_container button{
+margin-top:10px;
+border:none;
+border-bottom:2px solid lightgreen;
+width:100px;
+padding:10px;
+}
+
+
+.Err{
+margin-top:10px;
+width:100%;
+height:20px;
+color:red;
+}
+
+.Options{
+margin-top:20px;
+height:40px;
+display:flex;
+text-design:none;
+}
+
+
+.Options a{
+text-decoration:none;
+text-align:center;
+padding:10px;
+flex:1;
+color:green;
+}
+
+
+.Options a:hover{
+color:black;
+background:lightgreen;
+}
+
+
+.Options a:first-child{
+border-top:1px solid silver;
+border-right:1px solid silver;
+}
+
+.Options a:last-child{
+border-top:1px solid silver;
+}
+
+
+.container { 
+display:none;
+margin: 0 auto;
+border:2px solid silver;
+min-width:310px;
+max-width:400px;
+height:auto;
+}
+
+
+
+
+
+
+.Profile_Con{
+position:absolute;
+left:0;
+right:0;
+margin:10px auto;
+width:300px;
+height:500px;
+border:4px solid black;
+background:white;
+display:none;
+}
+
+
+.User_holder{
+height:100px;
+border-bottom:1px solid black;
+}
+
+.User_Name{
+text-align:center;
+border-bottom:1px solid black;
+}
+
+.User_Name P{
+margin-top:50px;
+}
+
+.User_Name a{
+text-decoration:none;
+border:1px solid silver;
+padding:1px;
+color:black;
+}
+
+.User_pic{
+border-radius:50%;
+border:2px solid silver;
+height:100px;
+width:100px;
+background:white;
+}
+
+
+.User_pic_Con{
+position:absolute;
+top:0;
+left:0;
+right:0;
+margin:40px auto;
+height:100px;
+width:100px;
+}
+
+.LogOut{
+position:absolute;
+bottom:0;
+left:0;
+right:0;
+margin:auto;
+width:100px;
+border:1px solid silver;
+text-align:center;
+cursor:pointer;
+}
+
+.LogOut:hover{
+border:1px solid lightgreen;
+background:lightgreen;
+}
+
+.User_data{
+height:250px;
+}
+
+
+.User_data div{
+margin:5px auto;
+height:40px;
+display:flex;
+}
+
+
+.User_data div input{
+height:25px;
+flex:5;
+text-align:center;
+}
+
+.User_data div a{
+padding:10px;
+float:right;
+flex:1;
+}
+
+
+
+
+
+.Invite_Con{
+position:absolute;
+left:0;
+right:0;
+margin:10px auto;
+width:300px;
+height:350px;
+border:2px solid black;
+background:white;
+display:none;
+}
+
+.Hide_Invite{
+position:absolute;
+padding:10px;
+right:0px;
+color:silver;
+text-decoration:none;
+}
+
+
+.Nav_F{
+height:40px;
+display:flex;
+}
+
+.Nav_F div{
+margin:0 auto;
+text-align:center;
+vertical-align: middle;
+cursor:pointer;
+}
+
+
+.Nav_F div:first-child{
+border-bottom:1px solid lightgreen;
+}
+
+
+.Friend_Con{
+margin-top:10px;
+}
+
+
+.Search_Con{
+text-align:center;
+}
+
+.Friend_Con input{
+text-align:center;
+padding:5px;
+}
+
+.Friend_list{
+height:250px;
+width:auto;
+overflow-y:scroll;
+}
+
+
+.Friend_list div{
+margin:5px;
+padding:5px;
+border:1px solid black;
+}
+
+
+.Friend_list strong{
+
+margin-right:10px;
+float:right;
+}
+
+.Friend_list a{
+margin-top:10px;
+margin-right:10px;
+float:right;
+}
+
+
+
+.navbar {
+margin:0 auto;
+height:50px;
+}
+
+
+.PL{
+float:left;
+width:20%;
+text-align:center;
+vertical-align: middle;
+}
+
+
+.UserName{
+margin-top:-5px;
+float:left;
+width:60%;;
+border-bottom:2px solid black;
+text-align:center;
+vertical-align: middle;
+overflow:hidden;
+}
+
+
+.Profile{
+width:20%;
+float:left;
+height:100%;
+align-items: center;
+}
+
+
+.Profile_pic{
+border:1px solid black;
+border-radius:50%;
+object-fit: cover;
+margin:5px;
+width:50px;
+height:50px;
+cursor:pointer;
+}
+
+
+.Chance {
+width:100%;
+height:100px;
+display:flex;
+}
+
+.Info{
+margin:2px;
+height:100%;
+width:38%;
+border:2px solid silver;
+border-radius:5px;
+text-align:center;
+vertical-align: middle;
+}
+
+
+
+.FProfile{
+width:100%;
+max-height:50%;
+cursor:pointer;
+}
+
+
+.Timer{
+margin:0 auto;
+width:100%;
+max-height:50%;
+}
+
+
+.Noti{
+margin:2px auto;
+text-align:center;
+vertical-align: middle;
+height:25px;
+}
+
+
+.FProfile_pic{
+margin:2px;
+border:2px solid lightgreen;
+border-radius:50%;
+width:30px;
+height:30px;
+cursor:pointer;
+}
+
+
+
+
+.Chance_X{
+margin:2px;
+height:100%;
+width:28%;
+border:2px solid silver;
+border-radius:5px;
+text-align:center;
+vertical-align: middle;
+}
+
+.Chance_O{
+margin:2px;
+height:100%;
+width:28%;
+border:2px solid silver;
+border-radius:5px;
+text-align:center;
+vertical-align: middle;
+}
+
+
+
+
+
+.Board_container{
+margin:10px auto;
+height:310px;
+width:100%;
+}
+
+
+.Board{
+
+margin:0px auto;
+height:305px;
+width:300px;
+}
+
+
+.Board Div {
+cursor:pointer;
+text-align:center;
+vertical-align: middle;
+width:98px;
+height:100px;
+}
+
+
+
+
+.box1{
+
+border-bottom:2px solid silver;
+border-right:2px solid silver;
+float:left;
+}
+
+.box2{
+border-bottom:2px solid silver;
+border-right:2px solid silver;
+float:left;
+}
+
+.box3{
+border-bottom:2px solid silver;
+float:left;
+}
+
+.box4{
+border-bottom:2px solid silver;
+border-right:2px solid silver;
+float:left;
+}
+
+.box5{
+border-bottom:2px solid silver;
+border-right:2px solid silver;
+float:left;
+}
+
+
+
+.box6{
+border-bottom:2px solid silver;
+float:left;
+}
+
+.box7{
+border-right:2px solid silver;
+float:left;
+}
+
+.box8{
+border-right:2px solid silver;
+float:left;
+}
+
+.box9{
+float:left;
+}
+
+
+
+.Score{
+margin:2px auto;
+display:flex;
+width:100%;
+height:50px;
+text-align:center;
+vertical-align: middle;
+}
+
+
+.Score Div{
+margin:2px auto;
+width:30%;
+}
+
+
+
+.Exit_Game{
+margin-top:5px;
+margin-right:5px;
+width:100%;
+}
+
+.Exit_Game img{
+float:right;
+cursor:pointer;
+width:20px;
+height:20px;
+}
+
+
+
+.Nav{
+position:absolute;
+top:0;
+left:50%;
+transform: translate(-50%, 0%);
+width:100%;
+max-width:500px;
+height:50px;
+background:#1DE9B6;
+color:white;
+text-align:center;
+}
+
+
+.Bottom_Con{
+margin:40px auto;
+width:300px;
+}
+
+.Bottom_Con a{
+display:block;
+font-size:15px;
+padding:10px;
+float:left;
+}
+
+
+.Bottom_Con a:hover{
+background:#1DE9B6;
+color:white;
+border-radius:5px;
+}
+
+
+</style>
+
+   <script src = "/socket.io/socket.io.js"></script>
+   
+   <script>
+      var socket = io();
+   </script>
+
+<script>
+
+
+
+
+var Email,UserName,FirstName,LastName,Pass;
+
+
+var ND = new Date();
+var DT = ND.getDate() + 7;
+var Day;
+var MNT;
+
+if(ND.getDay() == 1){
+Day = "Monday";
+}
+if(ND.getDay() == 2){
+Day = "Tuesday";
+}
+if(ND.getDay() == 3){
+Day = "Wednesday";
+}
+if(ND.getDay() == 4){
+Day = "Thursday";
+}
+if(ND.getDay() == 5){
+Day = "Friday";
+}
+if(ND.getDay() == 6){
+Day = "Satuarday";
+}
+if(ND.getDay() == 0){
+Day = "Sunday";
+}
+
+
+
+
+if(ND.getMonth() == 0){
+MNT = "January";
+}
+if(ND.getMonth() == 1){
+MNT = "Febuary";
+}
+if(ND.getMonth() == 2){
+MNT = "March";
+}
+if(ND.getMonth() == 3){
+MNT = "April";
+}
+if(ND.getMonth() == 4){
+MNT = "May";
+}
+if(ND.getMonth() == 5){
+MNT = "June";
+}
+if(ND.getMonth() == 6){
+MNT = "July";
+}
+if(ND.getMonth() == 7){
+MNT = "August";
+}
+if(ND.getMonth() == 8){
+MNT = "September";
+}
+if(ND.getMonth() == 9){
+MNT = "October";
+}
+if(ND.getMonth() == 10){
+MNT = "November";
+}
+if(ND.getMonth() == 11){
+MNT = "December";
+}
+
+var Yr= ND.getFullYear();
+
+
+
+
+$(document).ready(function(){
+var Cookie = document.cookie;
+
+
+if(Cookie != ""){ 
+
+var UserName = $.cookie("UserName");
+var Pass = $.cookie("Password");
+
+
+
+socket.emit("Login", {"Username": UserName , "Pass": Pass});
+
+
+socket.on("Sucess_log", function(data){
+
+
+User(data);
+
+
+
+});
+
+}
+
+});
+
+
+
+
+
+ function LogIn(){
+
+var Username = document.getElementById('UserName').value.toLowerCase();
+var Pass = document.getElementById('Pass').value.toLowerCase();
+
+
+if(Username == "" || Pass == ""){
+$('.Err').html("");
+$('.Err').append("<strong>*Fields Are Empty...*</strong>");
+
+}else{
+socket.emit("Login", {"Username": Username , "Pass": Pass});
+}
+
+
+socket.on("Sucess_log", function(data){
+
+
+
+User(data);
+
+
+
+
+
+
+document.cookie = "UserName = " + data.UserName + "; " + "expires=" + Day + ", " + DT +" "+  MNT + " "+ Yr + " " + "12:00:00 UTC"; 
+ 
+document.cookie = "Password = " + data.Pass + "; " + "expires=" + Day + ", " + DT +" "+  MNT + " "+ Yr + " " + "12:00:00 UTC"; 
+
+
+
+});
+
+
+socket.on("Fail_log",function(){
+
+
+$('.Err').html("");
+$('.Err').append("<strong>*Wrong Info...*</strong>");
+
+});
+
+
+}
+
+
+
+
+
+function SignUp(){
+
+
+var Email = document.getElementById("Email").value.toLowerCase();
+var UserName = document.getElementById("UserName").value.toLowerCase();
+var Pass_1 = document.getElementById("Pass_1").value.toLowerCase();
+var Pass_2 = document.getElementById("Pass_2").value.toLowerCase();
+
+
+var RmS = /\s/g;
+var result = UserName.match(RmS);
+
+
+if(UserName == "" || Pass_1 == "" || Pass_2 == "" || Email == ""){
+$('.Err').html("");
+$('.Err').append("<strong>*Fields Are Empty...*</strong>");
+
+}
+
+else if(Pass_1 != Pass_2){
+$('.Err').html("");
+$('.Err').append("<strong>*Passwords Dont Match..*</strong>");
+
+}else if(result){
+$('.Err').html("");
+$('.Err').append("<strong>*Username Should Not Have Space(s).*</strong>");
+
+} else{
+socket.emit("Sign-Up", {"Email" : Email  , "UserName" : UserName , "Pass": Pass_1});
+}
+
+
+
+socket.on("Email_fail",function(){
+$('.Err').html("");
+$('.Err').append("<strong>*Email Is Already Used..*</strong>");
+});
+
+socket.on("UserName_fail",function(){
+$('.Err').html("");
+$('.Err').append("<strong>*UserName Is Already Taken..*</strong>");
+});
+
+
+socket.on("Sucess_SignUp",function(){
+LoginCon()
+});
+
+
+}
+
+
+
+
+
+function Reset(){
+
+var Email = document.getElementById("Email").value;
+
+if( Email == ""){
+$('.Err').html("");
+$('.Err').append("<strong>*Field Is Empty...*</strong>");
+socket.emit("Reset", {"Email" : Email});
+}else{
+
+}
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+function LoginCon(){
+
+$('.User_nav').html("<u>Log-In</u>...");
+
+$('.form_container').html("<input type='text' id='UserName' Id='UserName' Placeholder='Username...'><input type='password' id='Pass' Id='Pass' Placeholder='Password...'> <div class='Err'></div><button  onclick='LogIn()'>LogIn</button>");
+
+$('.Options').html("<a href='javascript:SignupCon()'>Sign-Up</a><a href='javascript:ResetCon()'>Reset Password</a>");
+
+
+
+}
+
+
+function SignupCon(){
+
+$('.User_nav').html("<u>Sign-Up</u>...");
+
+$('.form_container').html("<input type='email' id='Email' Placeholder='Email'><input type='text' id='UserName' Placeholder='UserName'><input type='Password' id='Pass_1' Placeholder='Password'><input type='Password' id='Pass_2' Placeholder='Confirm Password'><div class='Err'></div><button  onclick='SignUp()'>SignUp</button>");
+
+$('.Options').html("<a href='javascript:LoginCon()'>Log-In</a><a href='javascript:ResetCon()'>Reset Password</a>");
+
+}
+
+
+function ResetCon(){
+
+$('.User_nav').html("<u>Reset</u>...");
+
+$('.form_container').html("<input type='email' id='Email' Placeholder='Email'><div class='Err'></div><button  onclick='Reset()'>Reset</button>");
+
+$('.Options').html("<a href='javascript:LoginCon()'>Log-In</a><a href='javascript:SignupCon()'>Sign-Up</a>");
+
+}
+
+
+
+
+function User(data){
+
+$('.User_ac').hide();
+$('.container').show();
+$('.Nav').hide();
+$('.Bottom_Con').hide();
+
+
+Email = data.Email;
+UserName = data.UserName;
+FirstName = data.FirstName;
+LastName = data.LastName;
+Pass = data.Pass;
+
+
+
+socket.on("Player_Left",function(){
+
+if (confirm("GAME OVER! PLAYER LEFT")) {
+
+location.reload();
+
+}else{
+
+alert("GAME OVER! PLAYER LEFT");
+
+setTimeout(function(){
+
+
+location.reload();
+
+},5000);
+
+}
+
+});
+
+
+
+
+socket.on("Joined_Room",function(data){
+
+$('.Invite_Con').hide();
+
+
+
+var Room = data;
+
+if(data.Client_1.toLowerCase() == UserName.toLowerCase()){
+
+
+$('.Invite_ConFun').remove();
+$('.FProfile').css("overflow-y","scroll");
+$('.FProfile').html("<p>"+ data.Client_2 +"</p><br><img src='user.png'  class='FProfile_pic' align='center'>");
+$('.Noti').html("<font size='4'>Tossing...</font>");
+
+
+
+}else{
+
+
+$('.Invite_ConFun').remove();
+$('.FProfile').css("overflow-y","scroll");
+$('.FProfile').html("<p>"+ data.Client_1 +"</p><br><img src='user.png'  class='FProfile_pic' align='center'>");
+$('.Noti').html("<font size='4'>Tossing...</font>");
+
+
+
+}
+
+
+
+
+
+socket.on("Val_Tossed",function(data){
+
+
+if(data[0].Client_1.toLowerCase() == UserName.toLowerCase()){
+
+$('.Noti').html("<font size='4'>You Got: "+ data[0].Val +"</font>");
+
+if(data[0].Val == "X"){
+
+$('.Chance_X').css("background","aquamarine");
+}else{
+
+$('.Chance_O').css("background","aquamarine");
+
+}
+
+
+setTimeout(function(){
+
+$('.Noti').html("<font size='4'>Tossing...</font>");
+
+},2000);
+
+}else if(data[1].Client_2.toLowerCase() == UserName.toLowerCase()){
+
+
+$('.Noti').html("<font size='4'>You Got: "+ data[1].Val +"</font>");
+
+
+if(data[1].Val == "X"){
+
+$('.Chance_X').css("background","aquamarine");
+}else{
+
+$('.Chance_O').css("background","aquamarine");
+
+}
+
+
+
+
+setTimeout(function(){
+
+$('.Noti').html("<font size='4'>Tossing...</font>");
+
+},2000);
+
+}
+
+
+});
+
+
+
+socket.on("Chance_Tossed",function(data){
+
+if(data[0].Client_1.toLowerCase() == UserName.toLowerCase()){
+
+if(data[0].Chance == 1){
+
+$('.Noti').html("<font size='4'>Your's Chance</font>");
+
+
+
+
+}else{
+
+
+
+$('.Noti').html("<font size='4'>Opponent's  Chance</font>");
+
+}
+
+
+
+
+
+
+}else if(data[1].Client_2.toLowerCase() == UserName.toLowerCase()){
+
+
+if(data[1].Chance == 1){
+
+$('.Noti').html("<font size='4'>Your's Chance</font>");
+
+
+
+
+}else{
+
+
+
+$('.Noti').html("<font size='4'>Opponent's  Chance</font>");
+
+}
+
+
+
+}
+
+
+
+$('.Exit_Game').append("<img src='Exit.png' class='Exit_Req' align='center'/>");
+
+$('.Exit_Req').click(function(){
+
+
+if (confirm("Leave Match!")) {
+
+socket.emit("Exit_Req", {"From":UserName , "Room": data[2].Room});
+location.reload();
+    } 
+
+
+
+
+
+});
+
+});
+
+
+
+
+
+socket.on("Chance_Noti",function(data){
+
+if(data.toLowerCase() == UserName.toLowerCase()){
+
+$('.Noti').html("<font size='4'>Opponent's  Chance</font>");
+
+}else if(data.toLowerCase() != UserName.toLowerCase()){
+
+$('.Noti').html("<font size='4'>Your's Chance</font>");
+
+}
+
+});
+
+
+
+
+
+
+
+
+
+var X =1;
+var T_B =10;
+
+while(X<T_B){
+
+$('.box'+ X).click(function(){
+
+
+socket.emit("Box_Clicked",{"UserName":UserName,"Box":this.className});
+
+
+});
+
+
+X++;
+}
+
+
+
+
+
+
+
+
+var Wins =0;
+var Lose = 0;
+var Tie = 0;
+
+socket.on("Change_Scores",function(data){
+
+
+if(data.Winner.toLowerCase() == "tie"){
+
+Tie = Tie + 1;
+
+$('.Score_tie').html("<font size='6'>Tie:"+ Tie +"</font>");
+
+var X =1;
+var T_B =10;
+
+while(X<T_B){
+$('.box' +X).html("");
+X++;
+}
+
+
+}else if(data.Winner.toLowerCase() == UserName.toLowerCase() ){
+
+
+
+var X =1;
+var T_B =10;
+
+while(X<T_B){
+$('.box' +X).html("");
+X++;
+}
+
+
+
+if(data.Val == "X"){
+Wins = Wins + 1;
+
+$('.Score_x').html("<font size='6'>X:"+ Wins +"</font>");
+
+}else{
+Wins = Wins + 1;
+
+$('.Score_o').html("<font size='6'>O:"+ Wins +"</font>");
+
+}
+
+
+
+
+
+
+
+
+
+}else{
+
+
+
+
+
+
+
+
+var X =1;
+var T_B =10;
+
+while(X<T_B){
+$('.box' +X).html("");
+X++;
+}
+
+
+
+if(data.Val == "X"){
+Lose = Lose + 1;
+$('.Score_x').html("<font size='6'>X:"+ Lose +"</font>");
+
+}else{
+Lose = Lose + 1;
+$('.Score_o').html("<font size='6'>O:"+ Lose +"</font>");
+
+}
+
+
+
+
+
+
+}
+
+
+});
+
+
+
+
+
+});
+
+
+
+
+
+
+
+socket.on("Board_Changed",function(data){
+
+var Box = data.Box;
+
+$('.' + Box).html("<p><font size='10'>"+ data.Val +"</font></p>");
+
+
+});
+
+
+
+
+
+
+
+socket.on("Asking_Play",function(data){
+$('.Notifier').html("<p align='center'>"+ data +":You Wanna Play With Me? </p><div><a href='' class='Accept_Play"+ data +"'>Accept</a> &nbsp <a href='' class='Reject_Play"+ data +"'>Reject</a></div>");
+
+$('.Accept_Play'+data).attr("href","javascript:Accept_Play('" +data+ "')");
+$('.Reject_Play'+data).attr("href","javascript:Reject_Play('" +data+ "')");
+
+$('.Notifier').show();
+
+
+
+
+
+
+});
+
+
+
+
+socket.on("Got_A_REQUEST",function(data){
+$('.Notifier').html("<p align='center'><span style='width:10px; overflow:hidden;'>"+ data +"<span> Sent You Friend Request..</p>");
+$('.Notifier').show();
+
+
+setTimeout(function(){
+$('.Notifier').fadeOut();
+$('.Notifier').html("");
+},2000);
+
+
+
+
+
+
+$('.Requests_Con').prepend("<div class='Req_"+ data.toLowerCase() +"'><img src='user.png'  class='FProfile_pic' align='center'> &nbsp"+  data.toLowerCase() +"&nbsp <a href='' class='Accept_"+ data.toLowerCase() +"'>Accept</a> &nbsp <a href='' class='Ignore_"+ data.toLowerCase() +"'>Ignore</a></div>");
+
+$('.Accept_' +data.toLowerCase()).attr("href","javascript:Accept('"+data.toLowerCase()+"')");
+
+$('.Ignore_' +data.toLowerCase()).attr("href","javascript:Ignore('"+data.toLowerCase()+"')");
+
+
+
+
+
+
+
+
+
+});
+
+
+
+
+socket.on("Users_Requests",function(data){
+
+
+if(data != ""){
+
+
+if(data.length < 100){
+$('.Requests_Title').html("Friend Requests ("+data.length+")");
+}else{
+$('.Requests_Title').html("Friend Requests (100+)");
+}
+
+var X =0;
+
+while(X < data.length){
+
+if(X == 0){
+
+$('.Requests_Con').html("<div class='Req_"+ data[X].From_User.toLowerCase() +"'><img src='user.png'  class='FProfile_pic' align='center'> &nbsp"+  data[X].From_User.toLowerCase() +"&nbsp <a href='' class='Accept_"+ data[X].From_User.toLowerCase() +"'>Accept</a> &nbsp <a href='' class='Ignore_"+ data[X].From_User.toLowerCase() +"'>Ignore</a></div>");
+
+$('.Accept_' +data[X].From_User.toLowerCase()).attr("href","javascript:Accept('"+data[X].From_User.toLowerCase()+"')");
+
+$('.Ignore_' +data[X].From_User.toLowerCase()).attr("href","javascript:Ignore('"+data[X].From_User.toLowerCase()+"')");
+
+}else{
+
+
+$('.Requests_Con').append("<div class='Req_"+ data[X].From_User.toLowerCase() +"'><img src='user.png'  class='FProfile_pic' align='center'> &nbsp"+  data[X].From_User.toLowerCase() +"&nbsp <a href='' class='Accept_"+ data[X].From_User.toLowerCase() +"'>Accept</a> &nbsp <a href='' class='Ignore_"+ data[X].From_User.toLowerCase() +"'>Ignore</a></div>");
+
+$('.Accept_' +data[X].From_User.toLowerCase()).attr("href","javascript:Accept('"+data[X].From_User.toLowerCase()+"')");
+
+$('.Ignore_' +data[X].From_User.toLowerCase()).attr("href","javascript:Ignore('"+data[X].From_User.toLowerCase()+"')");
+
+
+}
+X++;
+}
+}
+
+});
+
+
+
+
+
+
+
+
+
+$('.UserName').html("<p>" + UserName +"</p>");
+$('.User_Name').html("<p>" + UserName +"</p><a href='javascript:data_info()' class='data_info'>i</a>");
+
+
+
+$('.P_Email').attr('value',Email);
+$('.P_UserName').attr('value',UserName);
+$('.P_FName').attr('value',FirstName);
+$('.P_LName').attr('value',LastName);
+$('.P_Pass').attr('value',Pass);
+
+$('.P_Email').prop('disabled',true);
+$('.P_UserName').prop('disabled',true);
+$('.P_FName').prop('disabled',true);
+$('.P_LName').prop('disabled',true);
+$('.P_Pass').prop('disabled',true);
+
+
+
+$('.Invite_ConFun').click(function(){
+
+$('.Invite_Con').show();
+$('.Nav_Search').css("border-bottom","1px solid lightgreen");
+$('.Nav_Friends').css("border","none");
+$('.Friend_list').html("");
+$('.Search_bar').show();
+$('.Search_bar').val("");
+
+$('.Nav_Friends').click(function(){
+$('.Nav_Friends').css("border-bottom","1px solid lightgreen");
+$('.Nav_Search').css("border","none");
+$('.Friend_list').html("");
+$('.Search_bar').hide();
+Finish_FL_Cleaning();
+});
+
+
+
+
+
+$('.Nav_Search').click(function(){
+$('.Nav_Search').css("border-bottom","1px solid lightgreen");
+$('.Nav_Friends').css("border","none");
+$('.Friend_list').html("");
+$('.Search_bar').show();
+$('.Search_bar').val("");
+});
+
+
+});
+
+
+$('.Profile').click(function(){
+$('.Profile_Con').show();
+$('.Invite_Con').hide();
+$('.Friend_list').html("");
+$('.Search_bar').val('');
+$('.Noti_Widgit').hide();
+});
+
+
+$('.Noti_Widgit').click(function(){
+$('.Noti_Widgit').hide();
+$('.Hide_Noti').show();
+$('.Notification').slideToggle();
+});
+
+$('.Hide_Noti').click(function(){
+$('.Hide_Noti').hide();
+$('.Noti_Widgit').show();
+$('.Notification').slideToggle();
+});
+
+$('.LogOut').click(function(){
+var ND = new Date();
+var DT = ND.getDate() - 7;
+var Day;
+var MNT;
+
+if(ND.getDay() == 1){
+Day = "Monday";
+}
+if(ND.getDay() == 2){
+Day = "Tuesday";
+}
+if(ND.getDay() == 3){
+Day = "Wednesday";
+}
+if(ND.getDay() == 4){
+Day = "Thursday";
+}
+if(ND.getDay() == 5){
+Day = "Friday";
+}
+if(ND.getDay() == 6){
+Day = "Satuarday";
+}
+if(ND.getDay() == 0){
+Day = "Sunday";
+}
+
+
+
+
+if(ND.getMonth() == 0){
+MNT = "January";
+}
+if(ND.getMonth() == 1){
+MNT = "Febuary";
+}
+if(ND.getMonth() == 2){
+MNT = "March";
+}
+if(ND.getMonth() == 3){
+MNT = "April";
+}
+if(ND.getMonth() == 4){
+MNT = "May";
+}
+if(ND.getMonth() == 5){
+MNT = "June";
+}
+if(ND.getMonth() == 6){
+MNT = "July";
+}
+if(ND.getMonth() == 7){
+MNT = "August";
+}
+if(ND.getMonth() == 8){
+MNT = "September";
+}
+if(ND.getMonth() == 9){
+MNT = "October";
+}
+if(ND.getMonth() == 10){
+MNT = "November";
+}
+if(ND.getMonth() == 11){
+MNT = "December";
+}
+
+var Yr = ND.getFullYear();
+
+
+document.cookie = "UserName = " + data.UserName + "; " + "expires=" + Day + ", " + DT +" "+  MNT + " "+ Yr + " " + "12:00:00 UTC"; 
+ 
+document.cookie = "Password = " + data.Pass + "; " + "expires=" + Day + ", " + DT +" "+  MNT + " "+ Yr + " " + "12:00:00 UTC"; 
+
+location.reload();
+
+
+});
+
+
+
+
+
+
+}  // End USER........
+
+
+function Finish_FL_Cleaning(){
+
+socket.emit("Get_Friends",UserName);
+
+socket.on("User_Friends",function(data){
+
+
+if(data != ""){
+
+var X = 0;
+
+
+while(X < data.length){
+
+
+
+if(data[X].UserName.toLowerCase() == UserName.toLowerCase()){
+
+
+if(X == 0){
+
+$('.Friend_list').html("<div><img src='user.png'  class='FProfile_pic' align='center'> &nbsp"+  data[X].Friend  +"&nbsp <strong class='Invite_"+ data[X].Friend +"' style='cursor:pointer; font-size:35px;' onclick=''>+</strong>  </div>");
+
+
+$('.Invite_' +data[X].Friend).attr("onclick","SendPlayReq('"+ data[X].Friend +"')");
+
+
+}else{
+
+$('.Friend_list').append("<div><img src='user.png'  class='FProfile_pic' align='center'> &nbsp"+  data[X].Friend  +"&nbsp <strong class='Invite_"+ data[X].Friend +"' style='cursor:pointer; font-size:35px;' onclick=''>+</strong>  </div>");
+
+$('.Invite_' +data[X].Friend).attr("onclick","SendPlayReq('"+ data[X].Friend +"')");
+
+}
+
+
+
+
+}else if(data[X].Friend.toLowerCase() == UserName.toLowerCase()){
+
+
+
+if(X == 0){
+
+$('.Friend_list').html("<div><img src='user.png'  class='FProfile_pic' align='center'> &nbsp"+  data[X].UserName  +"&nbsp <strong class='Invite_"+ data[X].UserName +"' style='cursor:pointer; font-size:35px;' onclick=''>+</strong>  </div>");
+
+$('.Invite_' +data[X].UserName).attr("onclick","SendPlayReq('"+ data[X].UserName +"')");
+
+}else{
+
+$('.Friend_list').append("<div><img src='user.png'  class='FProfile_pic' align='center'> &nbsp"+  data[X].UserName  +"&nbsp <strong class='Invite_"+ data[X].UserName +"' style='cursor:pointer; font-size:35px;' onclick=''>+</strong>  </div>");
+
+$('.Invite_' +data[X].UserName).attr("onclick","SendPlayReq('"+ data[X].UserName +"')");
+
+}
+
+
+
+}
+
+
+
+
+X++;
+}
+
+
+
+}else{
+
+}
+
+
+
+});
+
+
+}
+
+
+
+
+
+
+function Accept_Play(data){
+$('.Notifier').hide();
+
+socket.emit("Accept_Play",{"From":data,"To":UserName});
+
+}
+
+
+
+
+
+function SendPlayReq(data){
+
+$('.Invite_'+data).replaceWith("Response Wait...");
+socket.emit("Requesting_Play",{"From":UserName,"To":data});
+
+
+
+}
+
+
+
+
+function Hide_Invite(){
+$('.Invite_Con').hide();
+$('.Friend_list').html("");
+$('.Search_bar').val('');
+}
+
+function Hide_Profile(){
+$('.Profile_Con').hide();
+$('.Noti_Widgit').show();
+$('.P_Email').val(Email);
+$('.P_UserName').val(UserName);
+$('.P_FName').val(FirstName);
+$('.P_LName').val(LastName);
+$('.P_Pass').val(Pass);
+
+
+$('.P_Email').prop('disabled','true');
+$('.P_UserName').prop('disabled','true');
+$('.P_FName').prop('disabled','true');
+$('.P_LName').prop('disabled','true');
+$('.P_Pass').prop('disabled','true');
+
+
+
+$('.P_Email').attr('placeholder','Email');
+$('.E_Edit').html("Edit");
+$('.E_Edit').attr('href','javascript:Edit_Email()');
+
+
+
+$('.P_UserName').attr('placeholder','UserName');
+$('.U_Edit').attr('href','javascript:Edit_UserName()');
+$('.U_Edit').html("Edit");
+
+
+
+
+$('.P_FName').attr('placeholder','Click Edit To Insert FirstName');
+$('.F_Edit').attr('href','javascript:Edit_FName()');
+$('.F_Edit').html("Edit");
+
+
+$('.P_LName').attr('placeholder','Click Edit To Insert LastName');
+$('.L_Edit').attr('href','javascript:Edit_LName()');
+$('.L_Edit').html("Edit");
+
+
+
+$('.P_Pass').attr('placeholder','Password');
+$('.P_Edit').attr('href','javascript:Edit_Pass()');
+$('.P_Edit').html("Edit");
+
+} 
+
+
+function Edit_Email(){
+$('.P_Email').prop('disabled',false);
+$('.P_Email').val('');
+$('.P_Email').attr('placeholder','Change Email...');
+$('.E_Edit').attr('href','javascript:Change_data()');
+$('.E_Edit').html("Save");
+}
+
+
+function Edit_UserName(){
+$('.P_UserName').prop('disabled',false);
+$('.P_UserName').val('');
+$('.P_UserName').attr('placeholder','Change UserName...');
+$('.U_Edit').attr('href','javascript:Change_data()');
+$('.U_Edit').html("Save");
+}
+
+function Edit_FName(){
+$('.P_FName').prop('disabled',false);
+$('.P_FName').val('');
+$('.P_FName').attr('placeholder','Change FirstName...');
+$('.F_Edit').attr('href','javascript:Change_data()');
+$('.F_Edit').html("Save");
+}
+
+
+function Edit_LName(){
+$('.P_LName').prop('disabled',false);
+$('.P_LName').val('');
+$('.P_LName').attr('placeholder','Change LastName...');
+$('.L_Edit').attr('href','javascript:Change_data()');
+$('.L_Edit').html("Save");
+}
+
+function Edit_Pass(){
+$('.P_Pass').prop('disabled',false);
+$('.P_Pass').val('');
+$('.P_Pass').attr('placeholder','Change LastName...');
+$('.P_Edit').attr('href','javascript:Change_data()');
+$('.P_Edit').html("Save");
+}
+
+function See_Pass(){
+
+$('.P_Pass').attr('type','text');
+$('.P_View').attr('href','javascript:Hide_Pass()');
+$('.P_View').html("Hide");
+
+setTimeout(function(){
+Hide_Pass();
+},10000);
+
+}
+
+function Hide_Pass(){
+
+$('.P_Pass').attr('type','Password');
+$('.P_View').attr('href','javascript:See_Pass()');
+$('.P_View').html("View");
+}
+
+
+function data_info(){
+$('.P_Email').val('');
+$('.P_UserName').val('');
+$('.P_FName').val('');
+$('.P_LName').val('');
+$('.P_Pass').val('');
+
+$('.data_info').attr('href','javascript:data_infobck()');
+
+
+}
+
+
+function data_infobck(){
+$('.P_Email').val(Email);
+$('.P_UserName').val(UserName);
+$('.P_FName').val(FirstName);
+$('.P_LName').val(LastName);
+$('.P_Pass').val(Pass);
+
+$('.data_info').attr('href','javascript:data_info()');
+}
+
+
+
+
+function Change_data(){
+
+
+
+$('.P_Email').val();
+$('.P_UserName').val();
+$('.P_FName').val();
+$('.P_LName').val();
+$('.P_Pass').val();
+
+
+if ($('.E_Edit').html() == "Save"){
+$('.P_Email').prop('disabled','true');
+
+if($('.P_Email').val() == ''){
+$('.P_Email').prop('disabled',false);
+alert("Email IS EMPTY!!!");
+}else if($('.P_Email').val().toLowerCase() == Email.toLowerCase()){
+$('.P_Email').prop('disabled',false);
+alert("This Email is Already Yours..");
+}else{
+socket.emit("Change_info", {"ORG_EMAIL":Email , "Email":$('.P_Email').val()});
+}
+
+socket.on("Changed_Email",function(){
+$('.E_Edit').html("Edit");
+$('.E_Edit').attr('href','javascript:Edit_Email()');
+Email = $('.P_Email').val();
+});
+
+socket.on("Change_E_Err",function(){
+$('.P_Email').prop('disabled',false);
+
+$('.P_Email').val('');
+$('.P_Email').attr("Placeholder","Email Already Taken...");
+
+
+$('.P_Email').css('border-bottom','2px solid red');
+$('.P_Email').prop("disabled",true);
+
+
+setTimeout(function(){
+$('.P_Email').css('border-bottom','2px solid silver');
+$('.P_Email').attr("Placeholder","Change Email");
+$('.P_Email').prop('disabled',false);
+},2000);
+
+});
+
+} // Email 
+
+
+
+
+if ($('.U_Edit').html() == "Save"){
+$('.P_UserName').prop('disabled','true');
+
+if($('.P_UserName').val() == ''){
+$('.P_UserName').prop('disabled',false);
+alert("UserName IS EMPTY!!!");
+}else if($('.P_UserName').val().toLowerCase() == UserName.toLowerCase()){
+$('.P_UserName').prop('disabled',false);
+alert("This UserName is Already Yours..");
+}else{
+socket.emit("Change_info", {"ORG_EMAIL":Email ,"UserName":$('.P_UserName').val()});
+}
+
+socket.on("Changed_UserName",function(){
+$('.U_Edit').html("Edit");
+$('.E_Edit').attr('href','javascript:Edit_UserName()');
+UserName = $('.P_UserName').val();
+document.cookie = "UserName = " + UserName + "; " + "expires=" + Day + ", " + DT +" "+  MNT + " "+ Yr + " " + "12:00:00 UTC"; 
+location.reload();
+
+});
+
+
+socket.on("Change_U_Err",function(){
+$('.P_UserName').prop('disabled',false);
+
+$('.P_UserName').val('');
+$('.P_UserName').attr("Placeholder","UserName Already Taken...");
+
+
+$('.P_UserName').css('border-bottom','2px solid red');
+$('.P_UserName').prop("disabled",true);
+
+
+setTimeout(function(){
+$('.P_UserName').css('border-bottom','2px solid silver');
+$('.P_UserName').attr("Placeholder","Change UserName");
+$('.P_UserName').prop('disabled',false);
+},2000);
+
+});
+
+
+} // UserName
+
+
+
+if ($('.F_Edit').html() == "Save"){
+$('.P_FName').prop('disabled','true');
+
+if($('.P_FName').val() == ''){
+$('.P_FName').prop('disabled',false);
+alert("FirstName IS EMPTY!!!");
+}else if($('.P_FName').val().toLowerCase() == FirstName.toLowerCase()){
+$('.P_FName').prop('disabled',false);
+alert("This FirstName is Already Yours..");
+}else{
+socket.emit("Change_info", {"ORG_EMAIL":Email ,"FirstName":$('.P_FName').val()});
+}
+
+
+socket.on("Changed_FirstName",function(){
+$('.F_Edit').html("Edit");
+$('.F_Edit').attr('href','javascript:Edit_FName()');
+FirstName = $('.P_FName').val();
+});
+
+} // FirstName
+
+
+
+
+if ($('.L_Edit').html() == "Save"){
+$('.P_LName').prop('disabled','true');
+
+if($('.P_LName').val() == ''){
+$('.P_LName').prop('disabled',false);
+alert("LastName IS EMPTY!!!");
+}else if($('.P_LName').val().toLowerCase() == LastName.toLowerCase()){
+$('.P_LName').prop('disabled',false);
+alert("This LastName is Already Yours..");
+}else{
+socket.emit("Change_info", {"ORG_EMAIL":Email ,"LastName":$('.P_LName').val()});
+}
+
+socket.on("Changed_LastName",function(){
+$('.L_Edit').html("Edit");
+$('.L_Edit').attr('href','javascript:Edit_LName()');
+LastName = $('.P_LName').val();
+
+
+
+});
+
+} // LastName
+
+
+
+
+if ($('.P_Edit').html() == "Save"){
+$('.P_Pass').prop('disabled','true');
+
+if($('.P_Pass').val() == ''){
+$('.P_Pass').prop('disabled',false);
+alert("Password IS EMPTY!!!");
+}else if($('.P_Pass').val().toLowerCase() == Pass.toLowerCase()){
+$('.P_Pass').prop('disabled',false);
+alert("This Password is Already Yours..");
+}else{
+socket.emit("Change_info", {"ORG_EMAIL":Email ,"Pass":$('.P_Pass').val()});
+}
+
+
+socket.on("Changed_Pass",function(){
+$('.P_Edit').html("Edit");
+$('.P_Edit').attr('href','javascript:Edit_Pass()');
+Pass = $('.P_Pass').val();
+
+document.cookie = "Password = " + Pass + "; " + "expires=" + Day + ", " + DT +" "+  MNT + " "+ Yr + " " + "12:00:00 UTC"; 
+
+});
+
+} // Password
+
+
+
+}
+
+
+
+
+
+function Search(){
+
+var Client;
+var X=0;
+
+if ( $('.Search_bar').val() >= ""){
+
+$('.Friend_list').html("");
+socket.emit("Search_Users", {"UserName" : $('.Search_bar').val().trim() , "User": UserName})
+
+
+socket.on("Users_Data_Requested",function(data){
+
+alert(data +"_Requested");
+});
+
+
+
+
+
+
+
+
+
+
+
+
+socket.on("Users_Data",function(data){
+
+
+
+
+Client = data;
+
+
+
+
+
+while(X < data.length){
+
+
+
+if (X == 0){
+
+if(data[X].Status != "Clear"){
+
+$('.Friend_list').html("<div class='Div_"+ Client[X].UserName +"'><img src='user.png'  class='FProfile_pic' align='center'> &nbsp"+  Client[X].UserName  +"&nbsp <strong>Request Sent</strong>  </div>");
+
+
+}else{
+
+
+if(data[X].Friend == 'No'){
+
+
+
+$('.Friend_list').html("<div class='Div_"+ Client[X].UserName +"'><img src='user.png'  class='FProfile_pic' align='center'> &nbsp"+  Client[X].UserName  +"&nbsp <a href='' class='Link_"+ Client[X].UserName +"'>Add Friend</a>  </div>");
+
+
+$('.Link_' + Client[X].UserName).attr("href", "javascript:Friend_R('" + Client[X].UserName + "')");
+
+
+
+}else{
+
+$('.Friend_list').html("<div class='Div_"+ Client[X].UserName +"'><img src='user.png'  class='FProfile_pic' align='center'> &nbsp"+  Client[X].UserName  +"&nbsp <strong>Friends</strong>  </div>");
+
+}
+
+
+
+}
+
+
+
+
+
+
+
+}else{
+
+
+
+if(data[X].Status != "Clear"){
+
+
+
+
+$('.Friend_list').append("<div class='Div_"+ Client[X].UserName +"'><img src='user.png'  class='FProfile_pic' align='center'> &nbsp"+  Client[X].UserName  +"&nbsp <strong>Request Sent</strong>  </div>");
+
+
+}else{
+
+
+if(data[X].Friend == "No"){
+
+
+
+
+
+$('.Friend_list').append("<div  class='Div_"+ Client[X].UserName +"'><img src='user.png'  class='FProfile_pic' align='center'> &nbsp"+  Client[X].UserName  +"&nbsp   <a href='' class='Link_"+ Client[X].UserName +"'>Add Friend</a></div>");
+
+$('.Link_' + Client[X].UserName).attr("href", "javascript:Friend_R('" + Client[X].UserName + "')");
+
+
+
+}else{
+
+
+$('.Friend_list').append("<div class='Div_"+ Client[X].UserName +"'><img src='user.png'  class='FProfile_pic' align='center'> &nbsp"+  Client[X].UserName  +"&nbsp <strong>Friends</strong>  </div>");
+
+
+
+}
+
+
+
+}
+
+
+}
+
+
+
+
+
+X++;
+
+
+} // While
+
+
+});
+
+
+
+
+
+
+} // if
+
+
+
+
+} // Search
+
+
+
+
+
+
+function Friend_R(data){
+
+socket.emit("Send_Request",{"From":UserName , "To": data});
+
+
+socket.on("Requested",function(){
+
+$('.Link_' + data).replaceWith("<strong>Request Sent</strong>");
+
+
+
+});
+}
+
+
+function Accept(data){
+
+socket.emit("Accept",{"UserName":UserName ,"Friend":data});
+
+socket.on("Accepted",function(){
+
+
+$('.Accept_' + data).replaceWith("<strong>Accepted</strong>");
+
+$('.Ignore_' + data).remove();
+
+
+setTimeout(function(){
+$('.Req_'+data).remove();
+},2000);
+
+
+});
+
+}
+
+function Ignore(data){
+
+socket.emit("Ignore",{"UserName":UserName ,"Friend":data});
+
+socket.on("Ignored",function(){
+
+$('.Ignore_' + data).replaceWith("<strong>Ignored</strong>");
+$('.Accept_' + data).remove();
+
+
+setTimeout(function(){
+$('.Req_'+data).remove();
+},2000);
+
+
+});
+
+}
+
+</script>
+</head>
+
+<body>
+
+<div class="Nav">
+	  <p>X&nbsp&nbsp&nbsp<u>Tic</u>-<u>Tac</u>-<u>Toe</u>:<u>Battle</u> <u>Royal</u>&nbsp&nbsp&nbspO</p>
+</div>
+
+
+
+
+<div class="User_ac">
+ 
+
+
+
+      <div class="User_nav">
+
+         <u>Log-In</u>...
+
+
+      </div>
+
+
+<div class="form_container">
+
+
+
+<input type="text" id="UserName" Id="UserName" Placeholder="Username...">
+<input type="password" id="Pass" Id="Pass" Placeholder="Password..."> 
+<div class="Err"></div>
+<button  onclick="LogIn()">LogIn</button>
+
+
+</div>
+
+<div class="Options">
+
+<a href="javascript:SignupCon()">Sign-Up</a>
+<a href="javascript:ResetCon()">Reset Password</a>
+</div>
+
+
+</div>
+<div class="Bottom_Con">
+   <a href="#">Terms And Conditions</a>
+   <a href="#">Report A Bug</a>
+   <a href="#">Contribute</a>
+   <a href="#">Contact</a>
+   <a href="#">Need Help</a>
+
+</div>
+
+
+
+
+  <div class="container">
+
+
+
+
+
+
+
+
+
+          <div class="Profile_Con"><div style="position:absolute;width:100%; font-size:16px; margin:5px;" align="center">  <strong>Early Access</strong>  </div>
+          <a href="javascript:Hide_Profile()" class="Hide_Invite">X</a>
+
+              <div class="User_holder"></div>
+                               
+                   <div class="User_Name"><p></p></div>
+
+              <div class="User_pic_Con"><Img src="user.png" class="User_pic"></div>
+
+                 <div class="User_data">
+
+                  <div><input type="email" Placeholder="Email" class="P_Email"><a href="javascript:Edit_Email()" class="E_Edit">Edit</a></div>
+                  <div><input type="text" Placeholder="UserName" class="P_UserName"><a href="javascript:Edit_UserName()" class="U_Edit">Edit</a></div>
+                  <div><input type="text" Placeholder="Click Edit To Insert FirstName" class="P_FName"><a href="javascript:Edit_FName()" class="F_Edit">Edit</a></div>
+                  <div><input type="text" Placeholder="Click Edit To Insert LastName" class="P_LName"><a href="javascript:Edit_LName()" class="L_Edit">Edit</a></div>
+                  <div><input type="password" Placeholder="Password" class="P_Pass"><a href="javascript:See_Pass()" class="P_View">View</a><a href="javascript:Edit_Pass()"class="P_Edit">Edit</a></div>
+
+
+                  </div>
+
+             <div class="LogOut"><p>Log-Out</p></div>
+           </div>
+       
+
+     <div class="navbar">
+ 
+         <div class="PL">
+
+       <p><font size="5">PL:1</font></p>
+
+     </div>
+
+
+
+     <div class="UserName">
+
+     <p></p>
+
+     </div>
+
+ <i class="Noti_Widgit"></i>
+         <div class="Profile">
+
+        <img src="user.png" class="Profile_pic">
+
+     </div>
+
+
+  </div>
+
+
+        <div class="Notification">
+
+             <div class="Nav_Noti">
+
+                <div class="Hide_Noti_Con"><p><i class="Hide_Noti"></i></p></div>
+
+                      <div class="Title"><p>Notification</p></div>
+                         
+                    <div class="Settings"></div>
+
+               </div>
+
+
+             <div class="Requests_Title"></div>
+             <div class="Requests_Con">
+
+
+
+
+
+              </div>
+
+          </div>
+
+
+
+  <div class="Chance">
+     
+     <div class="Chance_X"><p><font size="10">X</font></p></div>
+     <div class="Info">
+         <div class="FProfile"><p class="Invite_ConFun"><font size="6" align="center">Invite +</font></p></div>
+        <div class="Timer"><font size="4"></font></div>
+        <div class="Noti"><font size="4">No Player...</font></div>
+       </div>
+     <div class="Chance_O"><p><font size="10">O</font></p></div>
+
+
+ </div>
+
+
+        <div class="Invite_Con">
+          <a href="javascript:Hide_Invite()" class="Hide_Invite">X</a>
+          <div class="Nav_F">
+
+           <div class="Nav_Search"><p>Search</p></div>
+           <div class="Nav_Friends"><p>Friends</p></div>
+
+            </div>
+
+             <div class="Friend_Con">
+
+              <div class="Search_Con"><input type="text" class="Search_bar" Placeholder="Search For Usernames..." onkeyup="Search()"></div>
+             
+                  <div class="Friend_list">
+
+                              
+
+                   </div>
+ 
+
+             </div>
+         
+
+
+
+
+
+        </div>
+
+<div class="Exit_Game"></div>
+    <div class="Board_container"> 
+      <div class="Board">
+
+      <div class="box1"><p><font size="10"></font></p></div>
+      <div class="box2"><p><font size="10"></font></p></div>
+      <div class="box3"><p><font size="10"></font></p></div>
+      <div class="box4"><p><font size="10"></font></p></div>
+      <div class="box5"><p><font size="10"></font></p></div>
+      <div class="box6"><p><font size="10"></font></p></div>
+      <div class="box7"><p><font size="10"></font></p></div>
+      <div class="box8"><p><font size="10"></font></p></div>
+      <div class="box9"><p><font size="10"></font></p></div>
+
+
+      </div>
+   </div>
+
+
+        <div class="Score">
+
+         <div class="Score_x"><font size="6">X:0</font></div>
+         <div class="Score_tie"><font size="6">Tie:0</font></div>
+         <div class="Score_o"><font size="6">O:0</font></div>
+
+         </div>
+
+
+
+             <div class="Notifier">
+           
+           </div>
+		   
+		   
+</div>
+
+
+
+
+
+
+</body>
+</html>

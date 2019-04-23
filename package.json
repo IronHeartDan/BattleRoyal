@@ -1,0 +1,17 @@
+{
+  "name": "battleroyal",
+  "version": "1.0.0",
+  "description": "Socket",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.16.4",
+    "mysql": "^2.16.0",
+    "socket.io": "^2.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Danish Khan",
+  "license": "ISC"
+}
