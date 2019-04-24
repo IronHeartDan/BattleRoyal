@@ -12,6 +12,7 @@
 body {
   font-family: 'Rakkas', cursive;
   margin:0;
+  background:#c8d6e5;
 }
 
 body input{
@@ -132,7 +133,6 @@ border:1px solid black;
 .User_ac{
 margin:100px auto;
 margin-bottom:0;
-border:2px solid silver;
 width:300px;
 height:auto;
 }
@@ -144,7 +144,7 @@ text-align:center;
 vertical-align: middle;
 font-size:40px;
 padding:10px;
-color:silver;
+color:white;
 }
 
 .form_container{
@@ -157,7 +157,8 @@ height:auto;
 
 .form_container input{
 border:none;
-border-bottom:2px solid silver;
+border-bottom:2px solid #222f3e;
+border-radius:12px;
 padding:10px;
 width:250px;
 text-align:center;
@@ -168,7 +169,7 @@ vertical-align: middle;
 .form_container button{
 margin-top:10px;
 border:none;
-border-bottom:2px solid lightgreen;
+border-bottom:2px solid #222f3e;
 width:100px;
 padding:10px;
 }
@@ -976,7 +977,7 @@ $('.User_ac').hide();
 $('.container').show();
 $('.Nav').hide();
 $('.Bottom_Con').hide();
-
+$('body').css("background","white");
 
 Email = data.Email;
 UserName = data.UserName;
