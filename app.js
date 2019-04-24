@@ -7,9 +7,9 @@ var io = require('socket.io')(http);
 
 var Connection = mysql.createConnection({
 
- host:'localhost',
- user:'root',
- password:'',
+ host:'104.197.12.6',
+ user:'IronHeartDan',
+ password:'Danish1915.',
   database:'battleroyal'
 
 });
@@ -1609,6 +1609,6 @@ console.log("Server Is Empty...");
    });
 });
 
-http.listen(3000, function() {
-   console.log('listening on *:3000');
+http.listen(80, function() {
+   console.log('listening on *:80');
 });
