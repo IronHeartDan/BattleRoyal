@@ -7,7 +7,7 @@ var io = require('socket.io')(http);
 
 var Connection = mysql.createConnection({
 
- host:'104.197.12.6',
+ host:'35.240.138.55',
  user:'ironheartdan',
  password:'Danish1915.',
   database:'battleroyal'
