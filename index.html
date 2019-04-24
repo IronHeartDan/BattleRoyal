@@ -653,19 +653,16 @@ text-align:center;
 
 
 .Bottom_Con{
-margin:40px auto;
+margin:25px auto;
+display:flex;
 width:300px;
 }
 
 .Bottom_Con a{
-display:block;
-font-size:15px;
-padding:10px;
-float:left;
-}
-
-
-.Bottom_Con a:hover{
+margin:5px;
+text-decoration:none;
+font-size:10px;
+padding:5px;
 background:#1DE9B6;
 color:white;
 border-radius:5px;
@@ -854,6 +851,9 @@ var RmS = /\s/g;
 var result = UserName.match(RmS);
 
 
+var re = /[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}/igm;
+
+
 if(UserName == "" || Pass_1 == "" || Pass_2 == "" || Email == ""){
 $('.Err').html("");
 $('.Err').append("<strong>*Fields Are Empty...*</strong>");
@@ -866,9 +866,20 @@ $('.Err').append("<strong>*Passwords Dont Match..*</strong>");
 
 }else if(result){
 $('.Err').html("");
-$('.Err').append("<strong>*Username Should Not Have Space(s).*</strong>");
+$('.Err').append("<strong>*Username Contains Space(s).*</strong>");
 
-} else{
+} else if (Email == '' || !re.test(Email))
+{
+  
+
+
+$('.Err').html("");
+$('.Err').append("<strong>*Enter A Vaild Email.*</strong>");
+
+
+
+
+}else{
 socket.emit("Sign-Up", {"Email" : Email  , "UserName" : UserName , "Pass": Pass_1});
 }
 
